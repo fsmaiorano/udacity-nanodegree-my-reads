@@ -5,6 +5,8 @@ import BookList from './BookList';
 import BookSearch from './BookSearch';
 import * as BooksAPI from '../../Utils/BooksAPI';
 
+import './Book.css';
+
 class Book extends Component {
 
     state = {
