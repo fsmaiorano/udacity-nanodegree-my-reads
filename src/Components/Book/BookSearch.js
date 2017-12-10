@@ -41,7 +41,7 @@ class BookSearch extends Component {
 
     render() {
         const { query, searchResults } = this.state;
-        const { books, updateBookShelf } = this.props;
+        const { books, onChange, history } = this.props;
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -55,7 +55,8 @@ class BookSearch extends Component {
                 <div className="search-books-results">
                     <div className="books-grid">
                         {query.length > 0 && searchResults.map((selectedBook, index) => (<BookItem book={selectedBook} key={index} updateBookShelf={(shelf) => {
-                            this.updateBookShelf(selectedBook, shelf)
+                            onChange(selectedBook, shelf)
+                            history.push('/');
                         }} />))}
                     </div>
                 </div>
