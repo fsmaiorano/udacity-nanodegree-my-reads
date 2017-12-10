@@ -34,7 +34,7 @@ class Book extends Component {
         return (
             <div>
                 <Route exact path="/" render={() => (<BookList books={books} onChange={this.updateBooks} />)} />
-                <Route exact path="/search" render={({ history }) => (<BookSearch onChange={this.updateBooks} />)} books={books} />)} />
+                <Route exact path="/search" render={({ history }) => (<BookSearch updateBookList={this.updateBooks} books={books} />)} />
             </div>
         )
     }
