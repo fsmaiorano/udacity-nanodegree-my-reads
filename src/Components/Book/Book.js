@@ -23,13 +23,18 @@ class Book extends Component {
         });
     }
 
+    updateBooks = (selectedBook, shelfChange) => {
+        BooksAPI.update(selectedBook, shelfChange).then(() => {
+            this.getAllBooks();
+        })
+    }
 
     render() {
-        const {books} = this.state;
+        const { books } = this.state;
         return (
             <div>
-                <Route exact path="/" render={() => (<BookList books={books} onChange={this.update_books_details} />)} />
-                <Route exact path="/search" render={({ history }) => (<BookSearch onChange={this.update_books_details} books={books} />)} />
+                <Route exact path="/" render={() => (<BookList books={books} onChange={this.updateBooks} />)} />
+                <Route exact path="/search" render={({ history }) => (<BookSearch onChange={this.updateBooks} />)} books={books} />)} />
             </div>
         )
     }
