@@ -8,36 +8,37 @@ class BookSearch extends Component {
     state = {
         query: '',
         searchResults: []
-    }
+    };
 
     onSearch = (query) => {
         this.setState({ query: query, searchResults: [] });
         if (query) {
             BooksAPI.search(query, 10).then((searchResults) => {
                 if (searchResults.length > 0) {
-                    const { books } = this.props;
-                    searchResults = searchResults.filter((result) => (result.imageLinks))
-                    searchResults.forEach((result) => {
-                        if (books.length > 0) {
-                            books.forEach((book) => {
-                                if (book.id === result.id) {
-                                    result.shelf = book.shelf;
-                                }
-                                else {
-                                    result.shelf = 'none';
-                                }
-                            });
-                        }
-                    });
-                    this.setState(() => {
-                        return { searchResults: searchResults }
-                    })
+                    searchResults = this.organizeShelfs(searchResults);
+                    this.setState({ searchResults: searchResults });
                 }
             })
         } else {
             this.setState({ searchResults: [], query: '' })
         }
-    }
+    };
+
+    organizeShelfs = (searchResults) => {
+        searchResults = searchResults.filter((result) => (result.imageLinks))
+        const { books } = this.props;
+        searchResults.forEach((result) => {
+            if (books.length > 0) {
+                result.shelf = 'none';
+                books.forEach((book) => {
+                    if (book.id === result.id) {
+                        result.shelf = book.shelf;
+                    }
+                });
+            }
+        });
+        return searchResults;
+    };
 
     render() {
         const { query, searchResults } = this.state;
