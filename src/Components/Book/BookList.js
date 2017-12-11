@@ -7,16 +7,16 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import BookShelf from './BookShelf';
 
 class BookList extends Component {
-    
-goSearch = () => {
-    this.props.history.push('/search');
-}
+
+    goSearch = () => {
+        this.props.history.push('/search');
+    }
 
     render() {
         const { books, onChange } = this.props;
         return (
             <div className="list-books">
-           
+
                 <div className="list-books-content">
                     <div>
                         <BookShelf books={books.filter((book) => (book.shelf === "currentlyReading"))} title="Currently Reading" updateBookList={onChange} />
@@ -25,7 +25,7 @@ goSearch = () => {
                     </div>
                 </div>
                 <FloatingActionButton className='open-search' onClick={this.goSearch}>
-                    <ContentAdd/>
+                    <ContentAdd />
                 </FloatingActionButton>
             </div>
         )
