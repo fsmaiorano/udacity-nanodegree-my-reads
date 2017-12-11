@@ -51,7 +51,7 @@ class Book extends Component {
             <div>
                 <Route exact path="/" render={({ history }) => (
                     <div>
-                        <AppBar title={<Navbar books={books} onFilter={this.filterBooks} />} iconElementLeft={<IconButton> </IconButton>} />
+                        <AppBar title={<Navbar books={allbooks} onFilter={this.filterBooks} />} iconElementLeft={<IconButton> </IconButton>} />
                         {filteredBooks.length !== allbooks.length && (
                             <div className='showing-filtered-books'>
                                 <p>Now showing {filteredBooks.length} of {allbooks.length}</p>
