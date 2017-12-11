@@ -13,32 +13,49 @@ import './Book.css';
 class Book extends Component {
 
     state = {
-        books: []
+        allbooks: [],
+        books: [],
+        filteredBooks: []
     };
 
     componentDidMount = () => {
         this.getAllBooks();
-    }
+    };
 
     getAllBooks = () => {
         BooksAPI.getAll().then((books) => {
-            this.setState({ books: books });
+            this.setState({ allbooks: books, books: books, filteredBooks: books });
         });
-    }
+    };
+
+    filterBooks = (filteredBooks) => {
+        this.setState({ books: filteredBooks, filteredBooks: filteredBooks });
+    };
+
+    clearQuery = () => {
+        let books = this.state.allbooks;
+        this.setState({ books: books });
+    };
 
     updateBooks = (selectedBook, shelfChange) => {
         BooksAPI.update(selectedBook, shelfChange).then(() => {
             this.getAllBooks();
         })
-    }
+    };
 
     render() {
-        const { books } = this.state;
+        const { books, filteredBooks, allbooks } = this.state;
         return (
             <div>
                 <Route exact path="/" render={({ history }) => (
                     <div>
-                        <AppBar title={<Navbar />} iconClassNameRight="muidocs-icon-navigation-expand-more" books={books} />
+                        <AppBar title={<Navbar books={books} onFilter={this.filterBooks} />} iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                        {filteredBooks.length !== allbooks.length && (
+                            <div className='showing-contacts'>
+                                <span>Now showing {filteredBooks.length} of {allbooks.length}</span>
+                                <button onClick={this.clearQuery}>Show all</button>
+                            </div>
+                        )}
                         <BookList books={books} onChange={this.updateBooks} history={history} />
                     </div>
                 )} />
