@@ -8,6 +8,7 @@ import * as BooksAPI from '../../Utils/BooksAPI';
 import AppBar from 'material-ui/AppBar';
 import Navbar from './../../Shared/Navbar/Navbar';
 import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import './Book.css';
 
@@ -35,7 +36,7 @@ class Book extends Component {
 
     clearQuery = () => {
         let books = this.state.allbooks;
-        this.setState({ books: books });
+        this.setState({ books: books, filteredBooks: books });
     };
 
     updateBooks = (selectedBook, shelfChange) => {
@@ -52,9 +53,9 @@ class Book extends Component {
                     <div>
                         <AppBar title={<Navbar books={books} onFilter={this.filterBooks} />} iconElementLeft={<IconButton> </IconButton>} />
                         {filteredBooks.length !== allbooks.length && (
-                            <div className='showing-contacts'>
-                                <span>Now showing {filteredBooks.length} of {allbooks.length}</span>
-                                <button onClick={this.clearQuery}>Show all</button>
+                            <div className='showing-filtered-books'>
+                                <p>Now showing {filteredBooks.length} of {allbooks.length}</p>
+                                <RaisedButton onClick={this.clearQuery} label="Reset Search" primary={true}/>
                             </div>
                         )}
                         <BookList books={books} onChange={this.updateBooks} history={history} />
