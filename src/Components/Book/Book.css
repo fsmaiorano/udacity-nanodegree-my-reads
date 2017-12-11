@@ -32,26 +32,10 @@
     display: block;
   }
   
-  .bookshelf-title {
-    /* border-bottom: 1px solid #dedede; */
-  }
   .bookshelf-books {
     text-align: center;
   }
 
-  .loading {
-    top: 20px;
-    left: 15px;
-    width: 150px;
-    height: 153px;
-    background: white;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 128px;
-    font-size: 0;
-    background-image: url('./../../assets/icons/loading.svg');
-  }
-  
   .open-search {
     position: fixed;
     right: 25px;
