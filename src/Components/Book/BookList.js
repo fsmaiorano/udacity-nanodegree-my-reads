@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import BookShelf from './BookShelf';
+
+import { List } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 
 class BookList extends Component {
 
@@ -15,15 +17,14 @@ class BookList extends Component {
     render() {
         const { books, onChange } = this.props;
         return (
-            <div className="list-books">
-
-                <div className="list-books-content">
-                    <div>
-                        <BookShelf books={books.filter((book) => (book.shelf === "currentlyReading"))} title="Currently Reading" updateBookList={onChange} />
-                        <BookShelf books={books.filter((book) => (book.shelf === "wantToRead"))} title="Want to read" updateBookList={onChange} />
-                        <BookShelf books={books.filter((book) => (book.shelf === "read"))} title="Read" updateBookList={onChange} />
-                    </div>
-                </div>
+            <div>
+                <List>
+                    <BookShelf books={books.filter((book) => (book.shelf === "currentlyReading"))} title="Currently Reading" updateBookList={onChange} />
+                    <Divider />
+                    <BookShelf books={books.filter((book) => (book.shelf === "wantToRead"))} title="Want to read" updateBookList={onChange} />
+                    <Divider />
+                    <BookShelf books={books.filter((book) => (book.shelf === "read"))} title="Read" updateBookList={onChange} />
+                </List>
                 <FloatingActionButton className='open-search' onClick={this.goSearch}>
                     <ContentAdd />
                 </FloatingActionButton>

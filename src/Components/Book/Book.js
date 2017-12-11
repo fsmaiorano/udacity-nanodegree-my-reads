@@ -38,7 +38,7 @@ class Book extends Component {
             <div>
                 <Route exact path="/" render={({ history }) => (
                     <div>
-                        <AppBar title={<Navbar />} iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                        <AppBar title={<Navbar />} iconClassNameRight="muidocs-icon-navigation-expand-more" books={books} />
                         <BookList books={books} onChange={this.updateBooks} history={history} />
                     </div>
                 )} />

@@ -10,6 +10,15 @@ class BookItem extends Component {
         this.props.updateBookShelf(value);
     }
 
+    verifiyBookExists = (book) => {
+        if(book.shelf === 'none'){
+            return 'book-shelf-changer';
+        }
+        else{
+            return 'book-shelf-changer-exists';
+        }
+    }
+
     render() {
         const { book } = this.props;
         return (
@@ -21,7 +30,7 @@ class BookItem extends Component {
                             height: 193,
                             backgroundImage: `url("${book.imageLinks.thumbnail}")`
                         }}></div>
-                        <div className="book-shelf-changer">
+                        <div className={this.verifiyBookExists(book)}>
                             <IconMenu
                                 iconButtonElement={<IconButton></IconButton>}
                                 anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
