@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 class BookItem extends Component {
 
@@ -24,7 +23,7 @@ class BookItem extends Component {
                         }}></div>
                         <div className="book-shelf-changer">
                             <IconMenu
-                                iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                                iconButtonElement={<IconButton></IconButton>}
                                 anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
                                 targetOrigin={{ horizontal: 'left', vertical: 'top' }}
                                 onChange={this.changeShelf} value={book.shelf}
