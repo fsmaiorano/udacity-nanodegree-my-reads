@@ -7,6 +7,7 @@ import * as BooksAPI from '../../Utils/BooksAPI';
 
 import AppBar from 'material-ui/AppBar';
 import Navbar from './../../Shared/Navbar/Navbar';
+import IconButton from 'material-ui/IconButton';
 
 import './Book.css';
 
@@ -49,7 +50,7 @@ class Book extends Component {
             <div>
                 <Route exact path="/" render={({ history }) => (
                     <div>
-                        <AppBar title={<Navbar books={books} onFilter={this.filterBooks} />} iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                        <AppBar title={<Navbar books={books} onFilter={this.filterBooks} />} iconElementLeft={<IconButton> </IconButton>} />
                         {filteredBooks.length !== allbooks.length && (
                             <div className='showing-contacts'>
                                 <span>Now showing {filteredBooks.length} of {allbooks.length}</span>
