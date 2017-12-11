@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import BookItem from './BookItem';
 import * as BooksAPI from '../../Utils/BooksAPI';
 
-import Snackbar from 'material-ui/Snackbar';
 class BookSearch extends Component {
 
     state = {
         query: '',
-        searchResults: [],
-        showPopup: false
+        searchResults: []
     };
 
     onSearch = (query) => {
@@ -59,17 +57,10 @@ class BookSearch extends Component {
                     <div className="books-grid">
                         {query.length > 0 && searchResults.map((selectedBook, index) => (<BookItem book={selectedBook} key={index} updateBookShelf={(shelf) => {
                             onChange(selectedBook, shelf)
-                            this.setState({ showPopup: true })
                             history.push('/');
                         }} />))}
                     </div>
                 </div>
-                <Snackbar
-                    open={this.state.showPopup}
-                    message="The selected book was add on your library"
-                    autoHideDuration={4000}
-                    onRequestClose={this.handleRequestClose}
-                />
             </div>
         );
     }
