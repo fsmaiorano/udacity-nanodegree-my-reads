@@ -5,6 +5,9 @@ import BookList from './BookList';
 import BookSearch from './BookSearch';
 import * as BooksAPI from '../../Utils/BooksAPI';
 
+import AppBar from 'material-ui/AppBar';
+import Navbar from './../../Shared/Navbar/Navbar';
+
 import './Book.css';
 
 class Book extends Component {
@@ -33,7 +36,13 @@ class Book extends Component {
         const { books } = this.state;
         return (
             <div>
-                <Route exact path="/" render={() => (<BookList books={books} onChange={this.updateBooks} />)} />
+
+                <Route exact path="/" render={({history}) => (
+                    <div>
+                <AppBar title={<Navbar/>} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+                <BookList books={books} onChange={this.updateBooks} history={history} />
+                </div>
+                )} />
                 <Route exact path="/search" render={({ history }) => (<BookSearch onChange={this.updateBooks} books={books} history={history} />)} />
             </div>
         )
