@@ -1,0 +1,28 @@
+.loading-overlay { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: #000; 
+    opacity: 0.7;
+    z-index: 9998;
+}
+.loading { 
+    position: absolute;
+    width: 250px;
+    height: 210px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    z-index: 9999;
+    background-repeat: no-repeat;
+    background-image: url("./../../assets/icons/loading.svg");
+}
+
+
+.show {
+    display: none;
+}

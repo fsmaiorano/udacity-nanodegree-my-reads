@@ -15,7 +15,7 @@ class Navbar extends Component {
     onSearch = (query) => {
         this.setState({ query: query });
         let books = this.props.books;
-        let filteredBooks = books.filter(book => book.title.toLowerCase().indexOf(query) != -1);
+        let filteredBooks = books.filter(book => book.title.toLowerCase().indexOf(query) !== -1);
         this.props.onFilter(filteredBooks);
     }
 

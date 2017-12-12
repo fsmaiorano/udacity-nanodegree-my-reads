@@ -5,6 +5,7 @@ import BookList from './BookList';
 import BookSearch from './BookSearch';
 import * as BooksAPI from '../../Utils/BooksAPI';
 
+import Loading from './../../Shared/Loading/Loading';
 import AppBar from 'material-ui/AppBar';
 import Navbar from './../../Shared/Navbar/Navbar';
 import IconButton from 'material-ui/IconButton';
@@ -17,16 +18,18 @@ class Book extends Component {
     state = {
         allbooks: [],
         books: [],
-        filteredBooks: []
+        filteredBooks: [],
+        showLoading: true
     };
 
     componentDidMount = () => {
         this.getAllBooks();
+
     };
 
     getAllBooks = () => {
         BooksAPI.getAll().then((books) => {
-            this.setState({ allbooks: books, books: books, filteredBooks: books });
+            this.setState({ allbooks: books, books: books, filteredBooks: books, showLoading: false  });
         });
     };
 
@@ -46,16 +49,17 @@ class Book extends Component {
     };
 
     render() {
-        const { books, filteredBooks, allbooks } = this.state;
+        const { books, filteredBooks, allbooks, showLoading } = this.state;
         return (
             <div>
+                <Loading toggleLoading={showLoading} />
                 <Route exact path="/" render={({ history }) => (
                     <div>
                         <AppBar title={<Navbar books={allbooks} onFilter={this.filterBooks} />} iconElementLeft={<IconButton> </IconButton>} />
                         {filteredBooks.length !== allbooks.length && (
                             <div className='showing-filtered-books'>
                                 <p>Now showing {filteredBooks.length} of {allbooks.length}</p>
-                                <RaisedButton onClick={this.clearQuery} label="Reset Search" primary={true}/>
+                                <RaisedButton onClick={this.clearQuery} label="Reset Search" primary={true} />
                             </div>
                         )}
                         <BookList books={books} onChange={this.updateBooks} history={history} />
