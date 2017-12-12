@@ -44,7 +44,7 @@ class BookItem extends Component {
                                 onChange={this.changeShelf} value={book.shelf}
                             >
                                 <MenuItem value="" primaryText="Move to..." disabled />
-                                <MenuItem value="currentlyReading" primaryText="Currently Reading" onItemClick="currentlyReading" />
+                                <MenuItem value="currentlyReading" primaryText="Currently Reading" />
                                 <MenuItem value="wantToRead" primaryText="Want to Read" />
                                 <MenuItem value="read" primaryText="Read" />
                                 <MenuItem value="none" primaryText="None" />
