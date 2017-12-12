@@ -71,8 +71,3 @@ This project was bootstrapped with Create React App. You can find more informati
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-### Stuff used to make this:
-
- * https://reactjs.org
- * http://www.material-ui.com
-
