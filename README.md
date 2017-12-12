@@ -12,7 +12,7 @@ This project emphasizes the use of the React library and its states management.
 *	Download or Clone the repository.
 *	Run ```npm install``` to install project dependencies.
 *	Run the app using ```npm start ```.
-*	In your broser, access the url: ``` localhost:3000 ```.
+*	In your browser, access the url: ``` localhost:3000 ```.
 
 ## Atention
 
