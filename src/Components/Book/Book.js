@@ -27,21 +27,25 @@ class Book extends Component {
     };
 
     getAllBooks = () => {
+        // Get books and reset all states
         BooksAPI.getAll().then((books) => {
             this.setState({ allbooks: books, books: books, filteredBooks: books, showLoading: false  });
         });
     };
 
     filterBooks = (filteredBooks) => {
+        // Update state with filtered books and keep a history array
         this.setState({ books: filteredBooks, filteredBooks: filteredBooks });
     };
 
     clearQuery = () => {
+        // Clean filtered books array and set all books of library on list
         let books = this.state.allbooks;
         this.setState({ books: books, filteredBooks: books });
     };
 
     updateBooks = (selectedBook, shelfChange) => {
+        // Change book shelf
         BooksAPI.update(selectedBook, shelfChange).then(() => {
             this.getAllBooks();
         })

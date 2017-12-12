@@ -11,6 +11,7 @@ class BookSearch extends Component {
     };
 
     onSearch = (query) => {
+        // Organize a specific array for search results
         this.setState({ query: query, searchResults: [] });
         if (query) {
             BooksAPI.search(query, 10).then((searchResults) => {
@@ -25,6 +26,7 @@ class BookSearch extends Component {
     };
 
     organizeShelfs = (searchResults) => {
+        // Verify if book exists in library
         searchResults = searchResults.filter((result) => (result.imageLinks))
         const { books } = this.props;
         searchResults.forEach((result) => {
