@@ -23,7 +23,7 @@ class Navbar extends Component {
         const { query } = this.state;
         return (
             <div>
-                <span className='title'>MyReads</span>
+                <span className='title'>My Reads</span>
                 <input className="search" type="search" placeholder="Search" onChange={(event) => this.onSearch(event.target.value)} value={query} />
                 <div className="icon" onClick={this.toggleSearch}></div>
             </div>
