@@ -24,7 +24,6 @@ class Book extends Component {
 
     componentDidMount = () => {
         this.getAllBooks();
-
     };
 
     getAllBooks = () => {
