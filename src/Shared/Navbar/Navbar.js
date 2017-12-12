@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types'
 import './Navbar.css';
 
 class Navbar extends Component {
+
+    static propTypes = {
+        books: PropTypes.array.isRequired,
+        onFilter: PropTypes.func.isRequired
+    }
 
     state = {
         query: ''

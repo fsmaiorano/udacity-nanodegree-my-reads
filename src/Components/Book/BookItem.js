@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 
 class BookItem extends Component {
+
+    static propTypes = {
+        updateBookShelf: PropTypes.func.isRequired,
+        book: PropTypes.object.isRequired
+    }
 
     changeShelf = (event, value) => {
         this.props.updateBookShelf(value);

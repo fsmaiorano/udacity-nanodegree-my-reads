@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types'
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -9,6 +10,12 @@ import { List } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
 class BookList extends Component {
+
+    static propTypes = {
+        books: PropTypes.array.isRequired,
+        onChange: PropTypes.func.isRequired,
+        history: PropTypes.object.isRequired
+    }
 
     goSearch = () => {
         this.props.history.push('/search');
